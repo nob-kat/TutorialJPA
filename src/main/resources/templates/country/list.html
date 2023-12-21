@@ -16,6 +16,9 @@
             <td th:text="${data.code}"></td>
             <td th:text="${data.name}"></td>
             <td th:text="${data.population}"></td>
+            <td><a th:href="@{/country/detail/{code}/(code=${data.code})}">詳細</a></td>
+            <td><a th:href="@{/country/delete/{code}/(code=${data.code})}">削除</a></td>
+            <!-- プレースホルダを利用してURLを指定 -->
         </tr>
     </table>
 </body>

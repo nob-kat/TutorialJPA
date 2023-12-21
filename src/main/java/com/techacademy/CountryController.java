@@ -47,16 +47,26 @@ public class CountryController {
         // 一覧画面にリダイレクト
         return "redirect:/country/list";
     }
+// 課題のため削除
+//    // ----- 削除画面 -----
+//    @GetMapping("/delete")
+//    public String deleteCountryForm(Model model) {
+//        // country/delete.htmlに画面遷移
+//        return "country/delete";
+//    }
 
-    // ----- 削除画面 -----
-    @GetMapping("/delete")
-    public String deleteCountryForm(Model model) {
+    // 課題のため追加
+    @GetMapping(value = {"/delete", "/delete/{code}/" })
+    public String deleteCountryForm(@PathVariable(name = "code", required = false) String code, Model model) {
+        // Modelに登録
+        model.addAttribute("code", code);
         // country/delete.htmlに画面遷移
         return "country/delete";
     }
+    // 課題のため追加ここまで
 
     // ----- 削除 -----
-    @PostMapping("/delete")
+    @PostMapping(value = {"/delete", "/delete/{code}/" })
     public String deleteCountry(@RequestParam("code") String code, Model model) {
         // 削除
         service.deleteCountry(code);
@@ -64,4 +74,5 @@ public class CountryController {
         // 一覧画面にリダイレクト
         return "redirect:/country/list";
     }
+
 }
